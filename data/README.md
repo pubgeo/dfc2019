@@ -9,17 +9,15 @@ Both RGB and 8-band Multi-Spectral Images (MSI) are provided for Tracks 1-3. All
 |FOLDER                  | DESCRIPTION |
 | ---------------------- | ----------- |
 |Train-Track1-RGB        | Track 1 RGB images |
-|Train-Track1-MSI        | Track 1 MSI images (provided separately because they are large) |
+|Train-Track1-MSI-*      | Track 1 MSI images (provided separately because they are large) |
 |Train-Track1-Truth      | Track 1 reference data (AGL, CLS) for training |
 |Validate-Track1         | Track 1 RGB and MSI images for leaderboard validation - reference data not provided |
-|Train-Track2-RGB        | Track 2 RGB images |
-|Train-Track2-MSI-1      | Track 2 MSI images (provided separately and split into two zips because they are large) |
-|Train-Track2-MSI-2      | Track 2 MSI images (provided separately and split into two zips because they are large) |
+|Train-Track2-RGB-*      | Track 2 RGB images |
+|Train-Track2-MSI-*      | Track 2 MSI images |
 |Train-Track2-Truth      | Track 2 reference data (DSP, CLS) for training |
 |Validate-Track2         | Track 2 RGB and MSI images for leaderboard validation - reference data not provided |
-|Train-Track3-RGB        | Track 3 RGB images |
-|Train-Track3-MSI-1      | Track 3 MSI images (provided separately and split into three zips because they are large) |
-|Train-Track3-MSI-2      | Track 3 MSI images (provided separately and split into three zips because they are large) |
+|Train-Track3-RGB-*      | Track 3 RGB images |
+|Train-Track3-MSI-*      | Track 3 MSI images |
 |Train-Track3-Truth      | Track 3 reference data (DSM, CLS, and TXT indicating geospatial coordinates for submission) |
 |Track3-Metadata         | Satellite metadata for each source image useful for multi-view stereo in Track 3 |
 |Validate-Track3         | Track 3 RGB and MSI images for leaderboard validation - reference data not provided |
@@ -27,6 +25,9 @@ Both RGB and 8-band Multi-Spectral Images (MSI) are provided for Tracks 1-3. All
 |Train-Track4            | Track 4 point clouds (PC3) |
 |Train-Track4-Truth		 | Track 4 reference data (CLS) |
 |Validate-Track4         | Track 4 point clouds for leaderboard validation - reference data not provided |
+
+> Note: Folders with a trailing '-*' imply that they were split into multiple folders due to file hosting limitations. 
+For your own convenience, you may want to merge these folders together, removing the trailing '-*'
 
 ## Classification labels
 Classification labels for all tracks are based on the LAS specification. Submissions must label semantic categories using these values consistent with the reference data provided. Unlabeled points in reference data are not included in metric evaluation. Any unlabeled points in a submission will be penalized in metric evaluation.
