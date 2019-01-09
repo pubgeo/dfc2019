@@ -1,0 +1,24 @@
+name: "dev-gpu"
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3
+  - keras-gpu
+  - tensorflow-gpu
+  - pandas
+  - matplotlib
+  - jupyter
+  - nb_conda
+  - tqdm
+  - tifffile
+  - opencv
+  - graphviz
+  - gdal
+  - scikit-image
+  - pip:
+    - pydot
+    - toposort
+    - albumentations
+    - opencv-contrib-python

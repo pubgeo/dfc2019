@@ -1,0 +1,5 @@
+tifffile
+keras
+scipy
+pillow
+albumentations

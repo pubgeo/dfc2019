@@ -1,0 +1,24 @@
+name: "dev"
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3
+  - keras
+  - tensorflow
+  - pandas
+  - matplotlib
+  - jupyter
+  - nb_conda
+  - tqdm
+  - tifffile
+  - opencv
+  - graphviz
+  - gdal
+  - scikit-image
+  - pip:
+    - pydot
+    - toposort
+    - albumentations
+    - opencv-contrib-python
