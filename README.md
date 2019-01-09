@@ -2,7 +2,7 @@
 For more information visit IEEE's [2019 Data Fusion Contest](http://www.grss-ieee.org/community/technical-committees/data-fusion/data-fusion-contest/).
 
 ## Cloning this repository
-This repository contains large model files used by baseline algorithms. The model files do not need to be downloaded, but are provided as a convenience. Please use [git lfs](https://git-lfs.github.com/] when cloning to have access to these models.
+This repository contains large model files used by baseline algorithms. The model files do not need to be downloaded, but are provided as a convenience. Please use [git lfs](https://git-lfs.github.com/) when cloning to have access to these models.
 
 ## Contest Tracks
 ### Track 1: Single View Semantic 3D
