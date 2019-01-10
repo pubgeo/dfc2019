@@ -2,7 +2,7 @@
 For more information visit IEEE's [2019 Data Fusion Contest](http://www.grss-ieee.org/community/technical-committees/data-fusion/data-fusion-contest/).
 
 ## Cloning this repository
-This repository contains large model files used by baseline algorithms. The model files do not need to be downloaded, but are provided as a convenience. Please use [git lfs](https://git-lfs.github.com/) when cloning to have access to these models.
+This repository contains large model files used by baseline algorithms. The model files do not need to be downloaded, but are provided as a convenience. Please use [git lfs](https://git-lfs.github.com/] when cloning to have access to these models. If you did not install and initialize git lfs before cloning, you can simply run `git lfs fetch` after locally initializing git lfs.
 
 ## Contest Tracks
 ### Track 1: Single View Semantic 3D
@@ -35,3 +35,4 @@ The authors are grateful to the IEEE GRSS IADF committee chairs – Bertrand Le 
 ## Reference
 For more information on the data:
 [Marc Bosch, Kevin Foster, Gordon Christie, Sean Wang, Gregory D. Hager, and Myron Brown, "Semantic Stereo for Incidental Satellite Images," Proc. of Winter Conf. on Applications of Computer Vision, 2019.](https://arxiv.org/abs/1811.08739)
+
