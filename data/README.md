@@ -1,12 +1,10 @@
 # DATA 
-In this folder are 4 torrent files. They can be used to download all the needed files for training and validating your solutions.
-
-They are separated by track in order to help save time and disk space for those who are only participating in a subset of the challenge.
+To download the data, please visit the [challenge registration page](http://www.grss-ieee.org/community/technical-committees/data-fusion/2019-ieee-grss-data-fusion-contest/).
 
 ## Data provided:
 Both RGB and 8-band Multi-Spectral Images (MSI) are provided for Tracks 1-3. All source images are from WorldView-3 and are provided courtesy DigitalGlobe. MSI images are much larger than RGB due to the increased number of bands. The MSI images have been pan-sharpened. Submissions for Tracks 1-3 may use either RGB or MSI images. Both will be provided for validation and test phases of the contest as inputs. Use of the satellite image metadata provided is demonstrated in the baseline Track 3 solution, and additional information is available here: https://dg-cms-uploads-production.s3.amazonaws.com/uploads/document/file/106/ISD_External.pdf. For track 3, RPC sensor model metadata is retained in the RGB image files with adjustments to account for registration and image cropping. Sample code for manipulating the RPC metadata is provided in the Track 3 baseline code.
 
-|FOLDER                  | DESCRIPTION |
+| Zip File               | DESCRIPTION |
 | ---------------------- | ----------- |
 |Train-Track1-RGB        | Track 1 RGB images |
 |Train-Track1-MSI-*      | Track 1 MSI images (provided separately because they are large) |
@@ -26,8 +24,8 @@ Both RGB and 8-band Multi-Spectral Images (MSI) are provided for Tracks 1-3. All
 |Train-Track4-Truth		 | Track 4 reference data (CLS) |
 |Validate-Track4         | Track 4 point clouds for leaderboard validation - reference data not provided |
 
-> Note: Folders with a trailing '-*' imply that they were split into multiple folders due to file hosting limitations. 
-For your own convenience, you may want to merge these folders together, removing the trailing '-*'
+>The data package is broken up into many zips due to file hosting limitations. Folders with a trailing '-\*' imply that they were split into multiple folders due to file hosting limitations. 
+For your own convenience, you may want to merge these folders together, removing the trailing '-\*'
 
 ## Classification labels
 Classification labels for all tracks are based on the LAS specification. Submissions must label semantic categories using these values consistent with the reference data provided. Unlabeled points in reference data are not included in metric evaluation. Any unlabeled points in a submission will be penalized in metric evaluation.
