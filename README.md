@@ -21,7 +21,7 @@ In [Track 4](track4) the aim is to label points from the given aerial point clou
 For tracks 1-3, performance is assessed using the pixel-wise mean Intersection over Union (mIoU) for which true positives must have both the correct semantic label and height error less than a given threshold (1 meter for heights or 3 pixels for disparities). We call this metric mIoU-3.
 
 ## Data
-IEEE has provided a large data set, including ground truth, for training and testing. Instructions, and a torrent file are located in the [data](data) directory.
+IEEE has provided a large data set, including ground truth, for training and testing. Instructions for acquiring and using the data are located in the [data](data) directory.
 
 ## Baseline algorithms:
 JHU/APL has developed baseline implementations in python for each challenge track to demonstrate how to manipulate the challenge data and produce valid submission files. These are available at [http://github.com/pubgeo/dfc2019](). There is no requirement to use a particular language for producing submissions.
