@@ -10,6 +10,11 @@ Instructions for training and testing image semantic segmentation and single-vie
 ### Quick Run
 The following instructions are for running the baseline solution and assumes you have configured an [Anaconda](https://www.anaconda.com/download/) environment with [dev-gpu.yml](../dev-gpu.yml) or [dev-cpu.yml](../dev-cpu.yml).
 
+#### Data layout
+Due do the necessary data packaging splits, to run the following algorithms you will need to point [params.py](unets/params.py)'s [TRAIN_DIR](https://github.com/pubgeo/dfc2019/blob/master/track1/unets/params.py#L9) to a folder containing the Track1 AGL, CLS, RGB and MSI tif files found in the Train-Track1-RGB, Train-Track1-MSI-*, and Train-Track1-Truth zip files.
+Similarly [params.py](unets/params.py)'s [TEST_DIR](https://github.com/pubgeo/dfc2019/blob/master/track1/unets/params.py#L12) should point to a folder containing MSI and RGB files found in the Validate-Track1 zip files.
+
+#### Running
 To train the UNET single view model, modify [params.py](unets/params.py) with your file names and run: 
 ```bash
 python ./unets/runBaseline.py train single-view

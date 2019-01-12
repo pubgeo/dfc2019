@@ -3,28 +3,27 @@ __version__ = 0.1
 
 import os
 
-#----------------------------------------------------
-#DATA I/O
+# ----------------------------------------------------
+# DATA I/O
 
 TRAIN_DIR = '../data/train/Track1/'
 LABEL_DIR = TRAIN_DIR
 CHECKPOINT_DIR = './checkpoint/'
-TEST_DIR = '../data/validate/Track1/'
+TEST_DIR = '../data/validate/Validate-Track1/'
 OUTPUT_DIR = '../data/validate/Track1-Submission/'
 SINGLEVIEW_TEST_MODEL = './weights/181206-unet-height-weights.60.hdf5'
 SEMANTIC_TEST_MODEL = './weights/181219-unet-semantic-weights.40.hdf5'
-
 
 if not os.path.isdir(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)
 
 if not os.path.isdir(CHECKPOINT_DIR):
     os.makedirs(CHECKPOINT_DIR)
-    
+
 CONTINUE_TRAINING = False
 CONTINUE_SEMANTIC_MODEL_FILE = SEMANTIC_TEST_MODEL
 CONTINUE_SINGLEVIEW_MODEL_FILE = SINGLEVIEW_TEST_MODEL
-    
+
 CHECKPOINT_PATH = os.path.join(CHECKPOINT_DIR, 'weights.{epoch:02d}.hdf5')
 
 CLASS_FILE_STR = '_CLS'
@@ -36,27 +35,26 @@ LABEL_FILE_EXT = IMG_FILE_EXT
 CLSPRED_FILE_STR = '_CLS'
 AGLPRED_FILE_STR = '_AGL'
 
-#for MSI image training
-MEAN_VALS_FILE='./data/msi_mean.json'
-MAX_VAL = 65536 #MSI images are int16, so dividing by this instead of 255 
+# for MSI image training
+MEAN_VALS_FILE = './data/msi_mean.json'
+MAX_VAL = 65536  # MSI images are int16, so dividing by this instead of 255
 
+# ----------------------------------------------------
+# MODEL TRAINING/TESTING
 
-#----------------------------------------------------
-#MODEL TRAINING/TESTING
-
-GPUS = '0' #GPU indices to restrict usage
+GPUS = '0'  # GPU indices to restrict usage
 NUM_CHANNELS = 3
 BATCH_SZ = 2
-IMG_SZ = (1024,1024) #this code assumes all images in the training set have the same numbers of rows and columns
-IGNORE_VALUE = -10000 #nan is set to this for ignore purposes later
-NUM_CATEGORIES = 5 #for semantic segmentation  
-MODEL_SAVE_PERIOD = 10 #how many epochs between model checkpoint saves
-NUM_EPOCHS = 200 #total number of epochs to train with
+IMG_SZ = (1024, 1024)  # this code assumes all images in the training set have the same numbers of rows and columns
+IGNORE_VALUE = -10000  # nan is set to this for ignore purposes later
+NUM_CATEGORIES = 5  # for semantic segmentation
+MODEL_SAVE_PERIOD = 10  # how many epochs between model checkpoint saves
+NUM_EPOCHS = 200  # total number of epochs to train with
 BINARY_CONF_TH = 0.4
 
 BLOCK_IMAGES = False
-BLOCK_SZ = (1024,1024)
-BLOCK_MIN_OVERLAP = 20 
+BLOCK_SZ = (1024, 1024)
+BLOCK_MIN_OVERLAP = 20
 
 OPTIMIZER = 'Adam'
 SEMANTIC_LOSS = 'categorical_crossentropy'
@@ -64,8 +62,8 @@ SEMANTIC_LOSS = 'categorical_crossentropy'
 BACKBONE = 'resnet34'
 ENCODER_WEIGHTS = 'imagenet'
 
-#----------------------------------------------------
-#FLAGS
+# ----------------------------------------------------
+# FLAGS
 
 SEMANTIC_MODE = 0
 SINGLEVIEW_MODE = 1
@@ -73,8 +71,8 @@ SINGLEVIEW_MODE = 1
 TRAIN_MODE = 0
 TEST_MODE = 1
 
-#----------------------------------------------------
-#LABEL MANIPULATION
+# ----------------------------------------------------
+# LABEL MANIPULATION
 
 CONVERT_LABELS = True
 

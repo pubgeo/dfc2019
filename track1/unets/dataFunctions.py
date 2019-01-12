@@ -5,7 +5,6 @@ import os
 import numpy as np
 from glob import glob
 import tifffile
-#from PIL import Image
 
 from keras.applications import imagenet_utils
 from keras.utils import to_categorical
@@ -29,6 +28,7 @@ from albumentations import (
     RandomGamma,
     RandomBrightness
 )
+
 
 def parse_args(argv, params):
     """
@@ -77,6 +77,7 @@ def parse_args(argv, params):
         
     return isTrain,mode
 
+
 def get_image_paths(params, isTest=None):
     """
     Generates a list semantic ground truth files, which are used to load RGB and 
@@ -89,14 +90,17 @@ def get_image_paths(params, isTest=None):
     if isTest:
         return glob(os.path.join(params.TEST_DIR, '*%s*.%s' % (params.IMG_FILE_STR,params.IMG_FILE_EXT)))
     else:
-        imgPaths = []
-        currPaths = glob(os.path.join(params.LABEL_DIR, '*%s*.%s' % (params.CLASS_FILE_STR, params.LABEL_FILE_EXT)))
-        for currPath in currPaths:
-            imageName = os.path.split(currPath)[-1]
-            imageName = imageName.replace(params.CLASS_FILE_STR, params.IMG_FILE_STR)
-            imageName = imageName.replace(params.LABEL_FILE_EXT, params.IMG_FILE_EXT)
-            imgPaths.append(os.path.join(params.TRAIN_DIR,imageName))
-    return imgPaths
+        img_paths = []
+        wildcard_image = '*%s.%s' % (params.CLASS_FILE_STR, params.LABEL_FILE_EXT)
+        glob_path = os.path.join(params.LABEL_DIR, wildcard_image)
+        curr_paths = glob(glob_path)
+        for currPath in curr_paths:
+            image_name = os.path.split(currPath)[-1]
+            image_name = image_name.replace(params.CLASS_FILE_STR, params.IMG_FILE_STR)
+            image_name = image_name.replace(params.LABEL_FILE_EXT, params.IMG_FILE_EXT)
+            img_paths.append(os.path.join(params.TRAIN_DIR, image_name))
+    return img_paths
+
 
 def load_img(imgPath):
     """
@@ -110,6 +114,7 @@ def load_img(imgPath):
         raise ValueError('Install pillow and uncomment line in load_img')
 #        img = np.array(Image.open(imgPath))
     return img
+
 
 def image_augmentation(currImg, labelMask):
     """
@@ -126,6 +131,7 @@ def image_augmentation(currImg, labelMask):
     labelMedium = augmented['mask']
     
     return imageMedium,labelMedium
+
 
 def image_batch_preprocess(imgBatch, params, meanVals):
     """
@@ -144,6 +150,7 @@ def image_batch_preprocess(imgBatch, params, meanVals):
         imgBatch = imgBatch / params.MAX_VAL
     return imgBatch
 
+
 def get_label_mask(labelPath, params, mode):
     """
     Loads the ground truth image (semantic or depth)
@@ -161,6 +168,7 @@ def get_label_mask(labelPath, params, mode):
         if params.NUM_CATEGORIES > 1:
             currLabel = to_categorical(currLabel, num_classes=params.NUM_CATEGORIES+1)
     return currLabel
+
 
 def load_batch(inds, trainData, params, mode, meanVals=None):
     """
@@ -226,6 +234,7 @@ def load_batch(inds, trainData, params, mode, meanVals=None):
 
     return imgBatch,labelBatch
 
+
 def get_batch_inds(idx, params):
     """
     Given a list of indices (random sorting happens outside), break into batches of indices for training
@@ -247,7 +256,8 @@ def get_batch_inds(idx, params):
         batchInds.append(idx[idx0:idx1])
         idx0 = idx1
     return batchInds
-    
+
+
 def convert_labels(Lorig, params, toLasStandard=True):
     """
     Convert the labels from the original CLS file to consecutive integer values starting at 0
@@ -268,6 +278,7 @@ def convert_labels(Lorig, params, toLasStandard=True):
         
     return L
 
+
 def get_blocks(params):
     """
     Create blocks using the image dimensions, block size and overlap.
@@ -284,6 +295,7 @@ def get_blocks(params):
             blocks.append((currx,curry))
             
     return blocks
+
 
 def get_train_data(imgPaths, params):
     """

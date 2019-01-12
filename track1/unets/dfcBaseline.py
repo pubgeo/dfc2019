@@ -15,6 +15,7 @@ from tqdm import tqdm
 import json
 import tensorflow as tf
 
+
 class DFCBaseline:
     def __init__(self, params=None, mode=None):
         """
@@ -87,26 +88,28 @@ class DFCBaseline:
         :return: None
         """
         
-        imgPaths = get_image_paths(self.params,isTest=False)
+        image_paths = get_image_paths(self.params, isTest=False)
         if self.params.BLOCK_IMAGES:
-            trainData = get_train_data(imgPaths, self.params)
+            train_data = get_train_data(image_paths, self.params)
         else:
-            trainData = []
-            for imgPath in imgPaths:
-                trainData.append((imgPath,0,0))
+            train_data = []
+            for imgPath in image_paths:
+                train_data.append((imgPath, 0, 0))
             
-        train_datagen = self.image_generator(trainData)
+        train_datagen = self.image_generator(train_data)
         model = self.build_model()
         model.summary()
         
         checkpoint = ModelCheckpoint(filepath=self.params.CHECKPOINT_PATH, monitor='loss', verbose=0, save_best_only=False,
                                          save_weights_only=False, mode='auto', period=self.params.MODEL_SAVE_PERIOD)
-        
+
+        if len(train_data) <= 0:
+            raise ValueError("No training data found. Update params.py accordingly")
+
         # train model
-        model.fit_generator(train_datagen, steps_per_epoch=int(len(trainData)/self.params.BATCH_SZ),
+        model.fit_generator(train_datagen, steps_per_epoch=int(len(train_data)/self.params.BATCH_SZ),
                             epochs=self.params.NUM_EPOCHS, callbacks=[checkpoint])
-    
-    
+
     def get_model(self, encoderWeights, input_tensor, input_shape):
         """
         Loads the model from segmentation_models for either semantic segmentation or single-view depth prediction
@@ -194,5 +197,3 @@ class DFCBaseline:
         masked_squared_error = K.square(mask_true * (y_true - y_pred))
         masked_mse = K.sum(masked_squared_error, axis=-1) / K.maximum(K.sum(mask_true, axis=-1), 1)
         return masked_mse
-
-    
