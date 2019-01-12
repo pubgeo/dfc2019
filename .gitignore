@@ -1,7 +1,8 @@
-# Ignore very large data folders
+# Ignore very large data folders 
 data/Metadata
 data/train
 data/validate
+*_npz
 
 # Python.gitignore (github/gitignore)
 # Byte-compiled / optimized / DLL files

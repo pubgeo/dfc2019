@@ -32,6 +32,8 @@ Submissions must match the reference file formats and data types and must be rea
 ## Acknowledgements
 The authors are grateful to the IEEE GRSS IADF committee chairs – Bertrand Le Saux, Ronny Hänsch, and Naoto Yokoya – for their collaboration in leveraging this work to enable public research. Commercial satellite imagery was provided courtesy of DigitalGlobe. U. S. Cities LiDAR and vector data were made publicly available by the Homeland Security Infrastructure Program. Geomni LiDAR and oblique imagery will be made available publicly for single use research purposes. This work was supported by the Intelligence Advanced Research Projects Activity (IARPA) contract no. 2017-17032700004. The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes notwithstanding any copyright annotation thereon. Disclaimer: The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies or endorsements, either expressed or implied, of IARPA or the U.S. Government.
 
+WorldView-3 images provided courtesy of DigitalGlobe.
+
 ## Reference
 For more information on the data:
 [Marc Bosch, Kevin Foster, Gordon Christie, Sean Wang, Gregory D. Hager, and Myron Brown, "Semantic Stereo for Incidental Satellite Images," Proc. of Winter Conf. on Applications of Computer Vision, 2019.](https://arxiv.org/abs/1811.08739)
