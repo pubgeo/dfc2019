@@ -3,6 +3,7 @@
 # - Replaced Conv2D with SeparableConv2D to reduce number of model parameters
 # - Removed sigmoid activation to directly regress disparity values
 # - Added option to run dropout at test time
+# Scott Almes performed pep fixes and
 
 # MIT License
 # Copyright (c) 2018 Rowel Atienza
@@ -27,21 +28,19 @@ from __future__ import division
 from __future__ import print_function
 
 import keras
-from keras.layers import Dense, Dropout
-from keras.layers import Input, Conv2D, Conv2DTranspose, SeparableConv2D
+from keras.layers import Dropout
+from keras.layers import Input, Conv2DTranspose, SeparableConv2D
 from keras.layers import ZeroPadding2D, BatchNormalization, Activation
-from keras.layers import UpSampling2D 
-from keras.optimizers import RMSprop
-from keras.callbacks import ModelCheckpoint, LambdaCallback
-from keras.models import load_model, Model
+from keras.layers import UpSampling2D
+from keras.models import Model
 from keras.layers.pooling import MaxPooling2D
-from keras.utils import plot_model
-import numpy as np
 import time
+
 
 class ElapsedTimer(object):
     def __init__(self):
         self.start_time = time.time()
+
     def elapsed(self, sec):
         if sec < 0:
             sec = "%0.2f" % (sec * 100)
@@ -55,6 +54,7 @@ class ElapsedTimer(object):
         else:
             sec = "%0.4f" % (sec / (60 * 60))
             return sec + " hr"
+
     def elapsed_time(self):
         delta = time.time() - self.start_time
         return delta
@@ -62,18 +62,20 @@ class ElapsedTimer(object):
     def print_elapsed_time(self):
         print("Speed: %s " % self.elapsed(self.elapsed_time()))
 
+
 class Settings(object):
     def __init__(self):
         self.ydim = 1024
         self.xdim = 1024
-        self.channels = 3        
+        self.channels = 3
         self.model_weights = None
         self.dropout_test = False
 
+
 class DenseMapNet(object):
     def __init__(self, settings):
-        self.settings =settings
-        self.xdim = self.settings.xdim 
+        self.settings = settings
+        self.xdim = self.settings.xdim
         self.ydim = self.settings.ydim
         self.channels = self.settings.channels
         self.dropout_test = self.settings.dropout_test
@@ -82,16 +84,16 @@ class DenseMapNet(object):
     def build_model(self):
         dropout = 0.2
 
-        shape=(None, self.ydim, self.xdim, self.channels)
+        shape = (None, self.ydim, self.xdim, self.channels)
         left = Input(batch_shape=shape)
         right = Input(batch_shape=shape)
 
         # left image as reference
         x = SeparableConv2D(filters=16, kernel_size=5, padding='same')(left)
         xleft = SeparableConv2D(filters=1,
-                       kernel_size=5,
-                       padding='same',
-                       dilation_rate=2)(left)
+                                kernel_size=5,
+                                padding='same',
+                                dilation_rate=2)(left)
 
         # left and right images for disparity estimation
         xin = keras.layers.concatenate([left, right])
@@ -109,10 +111,10 @@ class DenseMapNet(object):
         # parallel cnn at increasing dilation rate
         for i in range(num_dilations):
             a = SeparableConv2D(filters=32,
-                       kernel_size=5,
-                       padding='same',
-                       dilation_rate=dilation_rate)(x8)
-            a = Dropout(dropout)(a,training=self.dropout_test)
+                                kernel_size=5,
+                                padding='same',
+                                dilation_rate=dilation_rate)(x8)
+            a = Dropout(dropout)(a, training=self.dropout_test)
             y = keras.layers.concatenate([a, y])
             dilation_rate += 1
 
@@ -125,18 +127,18 @@ class DenseMapNet(object):
             y = BatchNormalization()(x)
             y = Activation('relu')(y)
             y = SeparableConv2D(filters=64,
-                       kernel_size=1,
-                       padding='same')(y)
+                                kernel_size=1,
+                                padding='same')(y)
 
             y = BatchNormalization()(y)
             y = Activation('relu')(y)
             y = SeparableConv2D(filters=16,
-                       kernel_size=5,
-                       padding='same',
-                       dilation_rate=dilation_rate)(y)
-            y = Dropout(dropout)(y,training=self.dropout_test)
+                                kernel_size=5,
+                                padding='same',
+                                dilation_rate=dilation_rate)(y)
+            y = Dropout(dropout)(y, training=self.dropout_test)
             dilation_rate += 1
-        
+
         # disparity estimate scaled back to original image size
         x = keras.layers.concatenate([x, y], name='upsampled_disparity')
         x = BatchNormalization()(x)
@@ -145,7 +147,7 @@ class DenseMapNet(object):
         x = UpSampling2D(8)(x)
         if not self.settings.nopadding:
             x = ZeroPadding2D(padding=(2, 0))(x)
-			
+
         # left image skip connection to disparity estimate
         x = keras.layers.concatenate([x, xleft])
         y = BatchNormalization()(x)
@@ -158,15 +160,15 @@ class DenseMapNet(object):
         y = Conv2DTranspose(filters=1, kernel_size=9, padding='same')(y)
 
         # densemapnet model
-        self.model = Model([left, right],y)
-		
+        self.model = Model([left, right], y)
+
         if self.settings.model_weights:
             print("Loading checkpoint model weights %s...."
                   % self.settings.model_weights)
             self.model.load_weights(self.settings.model_weights)
 
-#        print("DenseMapNet Model:")
-#        self.model.summary()
-#        plot_model(self.model, to_file='densemapnet.png', show_shapes=True)
+        #        print("DenseMapNet Model:")
+        #        self.model.summary()
+        #        plot_model(self.model, to_file='densemapnet.png', show_shapes=True)
 
         return self.model

@@ -10,6 +10,6 @@ These instructions assume you have configured an [Anaconda](https://www.anaconda
 python ./mvs/test-mvs.py
 ```
 
-Review the default file names for the inputs and outputs in [test-mvs.py](mvs/test-mvs.py) and ensure that they match the data downloaded for the contest.
+> Review the default file names for the inputs and outputs in [test-mvs.py](mvs/test-mvs.py) and ensure that they match the data downloaded for the contest.
 
 Now the submission folder should have _CLS and _DSM files suitable for metric evaluation. Since you don't have the reference _CLS and _DSM files for the validation set used for leaderboard testing, you may try running MVS on a subset of the training data and then evaluate the leaderboard metrics using the truth _CLS and _DSM files provided for that data.
