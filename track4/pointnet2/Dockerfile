@@ -15,10 +15,13 @@ RUN /opt/conda/bin/conda create --yes --name cpdal-run --channel conda-forge pda
 # Compile and install pointnet2 tensorflow utilities
 COPY tf_ops /pointnet2/tf_ops
 RUN cd /pointnet2/tf_ops/3d_interpolation && \
+    chmod +x ./tf_interpolate_compile_py3.sh && chmod +x ./tf_interpolate_compile.sh && \
     ./tf_interpolate_compile_py3.sh && \
     cd /pointnet2/tf_ops/grouping && \
+    chmod +x ./tf_grouping_compile_py3.sh && chmod +x ./tf_grouping_compile.sh && \
     ./tf_grouping_compile_py3.sh && \
     cd /pointnet2/tf_ops/sampling && \
+    chmod +x ./tf_sampling_compile_py3.sh && chmod +x ./tf_sampling_compile.sh && \
     ./tf_sampling_compile_py3.sh
 
 # Set working directory
