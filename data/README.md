@@ -27,6 +27,12 @@ Both RGB and 8-band Multi-Spectral Images (MSI) are provided for Tracks 1-3. All
 >The data package is broken up into many zips due to file hosting limitations. Folders with a trailing '-\*' imply that they were split into multiple folders due to file hosting limitations. 
 For your own convenience, you may want to merge these folders together, removing the trailing '-\*'
 
+> The tifffile.imwrite() function was used to produce Track 1 and Track 2 8-band MSI files, and 
+it writes the metadata such that it's incompatible with GDAL and other TIF image readers but
+such that tifffile.imread() does read them correctly. For those who prefer not to use tifffile
+in their software for challenge solutions, [update_msi.py](update_msi.py) reads a folder of MSI images using 
+TIFFILE and then rewrites them to a new folder using GDAL.
+
 ## Classification labels
 Classification labels for all tracks are based on the LAS specification. Submissions must label semantic categories using these values consistent with the reference data provided. Unlabeled points in reference data are not included in metric evaluation. Any unlabeled points in a submission will be penalized in metric evaluation.
 
