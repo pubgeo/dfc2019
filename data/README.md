@@ -1,5 +1,5 @@
 # DATA 
-To download the data, please visit the [challenge page](http://www.grss-ieee.org/community/technical-committees/data-fusion/2019-ieee-grss-data-fusion-contest/) for more information and the [registration page](http://www.grss-ieee.org/contest2019/register.html) for access to the data.
+Torrent files for all data provided to participants of the contest are now available in this repository.
 
 ## Data provided:
 Both RGB and 8-band Multi-Spectral Images (MSI) are provided for Tracks 1-3. All source images are from WorldView-3 and are provided courtesy DigitalGlobe. MSI images are much larger than RGB due to the increased number of bands. The MSI images have been pan-sharpened. Submissions for Tracks 1-3 may use either RGB or MSI images. Both will be provided for validation and test phases of the contest as inputs. Use of the satellite image metadata provided is demonstrated in the baseline Track 3 solution, and additional information is available here: https://dg-cms-uploads-production.s3.amazonaws.com/uploads/document/file/106/ISD_External.pdf. For track 3, RPC sensor model metadata is retained in the RGB image files with adjustments to account for registration and image cropping. Sample code for manipulating the RPC metadata is provided in the Track 3 baseline code.
