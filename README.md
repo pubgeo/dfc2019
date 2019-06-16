@@ -21,7 +21,7 @@ In [Track 4](track4) the aim is to label points from the given aerial point clou
 For tracks 1-3, performance is assessed using the pixel-wise mean Intersection over Union (mIoU) for which true positives must have both the correct semantic label and height error less than a given threshold (1 meter for heights or 3 pixels for disparities). We call this metric mIoU-3.
 
 ## Data
-IEEE has provided a large data set, including ground truth, for training and testing. Instructions for acquiring and using the data are located in the [data](data) directory.
+JHU/APL has provided a large data set, including ground truth, for training and testing. Instructions for acquiring and using the data are located in the [data](data) directory.
 
 ## Baseline algorithms:
 JHU/APL has developed baseline implementations in python for each challenge track to demonstrate how to manipulate the challenge data and produce valid submission files. These baselines are available in the Track 1-4 folders referenced above.
@@ -30,9 +30,7 @@ JHU/APL has developed baseline implementations in python for each challenge trac
 Submissions must match the reference file formats and data types and must be readable by `scipy.misc.imread`. Please check your files before submitting. There is no requirement to use a particular language for producing submissions.
 
 ## Acknowledgements
-The authors are grateful to the IEEE GRSS IADF committee chairs – Bertrand Le Saux, Ronny Hänsch, and Naoto Yokoya – for their collaboration in leveraging this work to enable public research. Commercial satellite imagery was provided courtesy of DigitalGlobe. U. S. Cities LiDAR and vector data were made publicly available by the Homeland Security Infrastructure Program. Geomni LiDAR and oblique imagery will be made available publicly for single use research purposes. This work was supported by the Intelligence Advanced Research Projects Activity (IARPA) contract no. 2017-17032700004. The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes notwithstanding any copyright annotation thereon. Disclaimer: The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies or endorsements, either expressed or implied, of IARPA or the U.S. Government.
-
-WorldView-3 images provided courtesy of DigitalGlobe.
+The authors are grateful to the IEEE GRSS IADF committee chairs – Bertrand Le Saux, Ronny Hänsch, and Naoto Yokoya – for their collaboration in leveraging this work to enable public research. Commercial satellite images were provided courtesy of DigitalGlobe. U. S. Cities LiDAR and vector data were made publicly available by the Homeland Security Infrastructure Program. Geomni LiDAR and oblique imagery will be made available publicly for single use research purposes. This work was supported by the Intelligence Advanced Research Projects Activity (IARPA) contract no. 2017-17032700004. The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes notwithstanding any copyright annotation thereon. Disclaimer: The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies or endorsements, either expressed or implied, of IARPA or the U.S. Government.
 
 ## Reference
 For more information on the data:
