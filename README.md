@@ -1,4 +1,4 @@
-# 2019 IEEE Data Fusion Contest dataset, baselines, and metrics
+# 2019 IEEE Data Fusion Contest data, baselines, and metrics
 For more information visit IEEE's [2019 Data Fusion Contest](http://www.grss-ieee.org/community/technical-committees/data-fusion/2019-ieee-grss-data-fusion-contest/).
 
 ## Cloning this repository
