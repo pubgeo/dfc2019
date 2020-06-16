@@ -1,5 +1,5 @@
-# IEEE Data Fusion Contest
-For more information visit IEEE's [2019 Data Fusion Contest](http://www.grss-ieee.org/community/technical-committees/data-fusion/2019-ieee-grss-data-fusion-contest/). Additionally, this repo contains the [poster](DFC2019-WACV2019-Poster.pdf) presented at WACV 2019.
+# IEEE Data Fusion Contest baseline implementations
+For more information visit IEEE's [2019 Data Fusion Contest](http://www.grss-ieee.org/community/technical-committees/data-fusion/2019-ieee-grss-data-fusion-contest/).
 
 ## Cloning this repository
 This repository contains large model files used by baseline algorithms. The model files do not need to be downloaded, but are provided as a convenience. Please use [git lfs](https://git-lfs.github.com/) when cloning to have access to these models. If you did not install and initialize git lfs before cloning, you can simply run `git lfs fetch` after locally initializing git lfs.
