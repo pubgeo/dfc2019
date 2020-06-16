@@ -1,4 +1,4 @@
-# IEEE Data Fusion Contest baseline implementations
+# 2019 IEEE Data Fusion Contest dataset, baselines, and metrics
 For more information visit IEEE's [2019 Data Fusion Contest](http://www.grss-ieee.org/community/technical-committees/data-fusion/2019-ieee-grss-data-fusion-contest/).
 
 ## Cloning this repository
@@ -23,10 +23,10 @@ For tracks 1-3, performance is assessed using the pixel-wise mean Intersection o
 ## Data
 JHU/APL has provided a large data set, including ground truth, for training and testing. Instructions for acquiring and using the data are located in the [data](data) directory.
 
-## Baseline algorithms:
+## Baseline algorithms
 JHU/APL has developed baseline implementations in python for each challenge track to demonstrate how to manipulate the challenge data and produce valid submission files. These baselines are available in the Track 1-4 folders referenced above.
 
-## Submission requirements:
+## Submission requirements
 Submissions must match the reference file formats and data types and must be readable by `scipy.misc.imread`. Please check your files before submitting. There is no requirement to use a particular language for producing submissions.
 
 ## Acknowledgements
