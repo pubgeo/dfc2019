@@ -7,6 +7,10 @@ For track 1, JHU/APL trained a U-Net for for image semantic segmentation and sin
 
 Instructions for training and testing image semantic segmentation and single-view depth prediction models are provided in [unets/README.md](unets/README.md)
 
+### Model weights
+
+The model weights are now in a GitHub release zip file for download to avoid having large files in the code repo. 
+
 ### Quick Run
 The following instructions are for running the baseline solution and assumes you have configured an [Anaconda](https://www.anaconda.com/download/) environment with [dev-gpu.yml](../dev-gpu.yml) or [dev-cpu.yml](../dev-cpu.yml).
 
