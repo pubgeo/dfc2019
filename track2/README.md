@@ -6,6 +6,10 @@ For track 2, we trained ICNet for semantic segmentation and DenseMapNet for ster
 
 These instructions assume you have configured an [Anaconda](https://www.anaconda.com/download/) environment with [dev-gpu.yml](../dev-gpu.yml) or [dev-cpu.yml](../dev-cpu.yml).
 
+### Model weights
+
+The model weights are now in a GitHub release zip file for download to avoid having large files in the code repo. 
+
 ### TIFF Conversion
 Convert TIFF files to NPZ files which are used to train the models. The image indices are shuffled and then training and validation data sets are produced. Change the input and output folders in the code before running. 
 
