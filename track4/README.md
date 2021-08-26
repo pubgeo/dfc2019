@@ -14,6 +14,11 @@ Additionally, some of the ground truth points are marked with a 0 class.  This r
 ## Baseline Algorithm
 For the baseline algorithm, a PointNet++ (aka PointNet2) model was updated with modifications to support splitting/recombining large scenes.  For details on setting up/running the model, see [pointnet2/dfc/README.md](pointnet2/dfc/README.md)
 
+
+## Model weights
+
+The model weights are now in a GitHub release zip file for download to avoid having large files in the code repo. 
+
 ## Metrics
 To run the metrics code, it is easiest to use the same docker container that is used for the model, though it is not necessary.  Example command:
 
